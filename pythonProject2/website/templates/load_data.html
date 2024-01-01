@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title %}Data{% endblock %}
+
+{% block content %}
+<h1>This is the data page</h1>
+
+{% for out in outbreak %}
+    <h3>{{ out.Country }}</h3>
+{% endfor %}
+{% endblock %}
