@@ -1,1 +1,9 @@
-198870068-surreal-colorful-fluffy-creatures-monsters-many-toothy-and-big-eyed-colored-creatures-creepy.jpeg
+/* style.css */
+
+body {
+    background-image: url("/static/images/198870068-surreal-colorful-fluffy-creatures-monsters-many-toothy-and-big-eyed-colored-creatures-creepy.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional: Ensures the background image stays fixed as the user scrolls */
+    color: white; /* Text color */
+}
