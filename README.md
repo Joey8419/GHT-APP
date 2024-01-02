@@ -1,6 +1,3 @@
-# GHT-APP
-
-
 # GHT-APP (Global Health Tracking App)
 
 
