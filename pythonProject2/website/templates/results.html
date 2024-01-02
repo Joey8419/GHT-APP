@@ -1,0 +1,22 @@
+<!-- Place this file in the templates folder -->
+
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+  <h1>Search Results for "{{ search_query }}"</h1>
+
+  {% for outbreak in outbreaks %}
+    <div>
+      <h3>{{ outbreak.Country }} - {{ outbreak.Disease }}</h3>
+      <p>Disease Type: {{ outbreak.icd10n }}</p>
+      <p>Disease Subtype: {{ outbreak.icd103n }}</p>
+      <p>Disease Name: {{ outbreak.icd104n }}</p>
+      <p>Definition: {{ outbreak.Definition }}</p>
+
+      <!-- Add a link to view the bar graph visualization -->
+      <a href="{{ url_for('views.visualization', outbreak_id=outbreak.id) }}">View Visualization</a>
+    </div>
+    <hr>
+  {% endfor %}
+{% endblock %}

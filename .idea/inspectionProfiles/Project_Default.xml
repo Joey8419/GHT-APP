@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="6">
+            <item index="0" class="java.lang.String" itemvalue="#ffeb3b," />
+            <item index="1" class="java.lang.String" itemvalue="#006400);" />
+            <item index="2" class="java.lang.String" itemvalue="10px" />
+            <item index="3" class="java.lang.String" itemvalue="#9acd32," />
+            <item index="4" class="java.lang.String" itemvalue="right," />
+            <item index="5" class="java.lang.String" itemvalue="background-image:linear-gradient(to" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+  </profile>
+</component>

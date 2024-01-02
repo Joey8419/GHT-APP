@@ -51,3 +51,4 @@ def import_data():
 def data():
     outbreak = Outbreaks.query.all()
     return render_template('load_data.html', outbreak=outbreak)
+

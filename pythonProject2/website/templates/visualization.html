@@ -1,0 +1,44 @@
+<!-- Place this file in the templates folder -->
+
+{% extends "base.html" %}
+{% block title %}Visualization{% endblock %}
+
+{% block content %}
+  <h1>Visualization for {{ outbreak.Country }} - {{ outbreak.Disease }}</h1>
+
+  <!-- Add a canvas element to render the bar chart -->
+  <canvas id="barChart" width="800" height="400"></canvas>
+
+  <a href="{{ url_for('views.results', search_query=outbreak.Country) }}">Back to Results</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var ctx = document.getElementById('barChart').getContext('2d');
+      var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: {{ years|tojson }},
+          datasets: [{
+            label: 'Number of Occurrences',
+            data: {{ occurrences|tojson }},
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            x: {
+              type: 'linear',
+              position: 'bottom'
+            },
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    });
+  </script>
+{% endblock %}

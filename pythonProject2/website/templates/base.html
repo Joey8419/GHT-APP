@@ -34,6 +34,12 @@
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
         </div>
+        <!-- Move the search bar to the far right -->
+<form class="d-flex ml-auto" action="{{ url_for('views.search') }}" method="POST" role="search">
+  <input class="form-control me-2" type="search" name="search_query" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
       </div>
     </nav>
 
@@ -85,4 +91,10 @@
 <!--</script>-->
 <!--{% endblock %}-->
   </body>
+  <style>
+      body {
+      background-color: #212121;
+      color: white
+      }
+   </style>
 </html>
