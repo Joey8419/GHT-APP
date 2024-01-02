@@ -28,13 +28,10 @@ def search():
     return redirect(url_for('views.home'))
 
 
-# Add this new route at the end of your views.py
 @views.route('/results/<search_query>')
 def results(search_query):
-    # Use the search_query parameter to fetch relevant data from the database
+    # fetch relevant data from the database
 
-    # For now, let's assume you have a model named Outbreaks with a column 'Country'
-    # and you want to filter outbreaks based on the entered search query
     outbreaks = Outbreaks.query.filter(Outbreaks.Country.ilike(f'%{search_query}%')).all()
 
     # Create a new search entry in the database
@@ -42,6 +39,9 @@ def results(search_query):
         new_search = Search(user_id=current_user.id, country=search_query, year=0)  # Set year to 0 for now
         db.session.add(new_search)
         db.session.commit()
+
+        # Retrieve user's search history
+        search_history = current_user.get_search_history()
 
     return render_template('results.html', outbreaks=outbreaks)
 
@@ -59,6 +59,15 @@ def visualization(outbreak_id):
                        Outbreaks.Year)]
 
     return render_template('visualization.html', outbreak=outbreak, years=years, occurrences=occurrences)
+
+
+# Add this route to views.py
+@views.route('/search-history')
+@login_required
+def search_history():
+    # Retrieve user's search history
+    search_history = current_user.get_search_history()
+    return render_template('search_history.html', search_history=search_history)
 
 # @views.route('/search', methods=['GET', 'POST'])
 # def search():

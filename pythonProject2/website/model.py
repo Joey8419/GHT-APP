@@ -47,5 +47,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     searches = db.relationship('Search', backref='user', lazy=True)  # Relationship to the Search model, lazy loading
 
-
+    # Add a method to get user's search history
+    def get_search_history(self):
+        return Search.query.filter_by(user_id=self.id).order_by(Search.timestamp.desc()).all()
 

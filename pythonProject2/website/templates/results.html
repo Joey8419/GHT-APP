@@ -1,10 +1,16 @@
-<!-- Place this file in the templates folder -->
-
-{% extends "base.html" %}
-{% block title %}Search Results{% endblock %}
-
 {% block content %}
   <h1>Search Results for "{{ search_query }}"</h1>
+
+  <!-- Display user's search history -->
+  {% if search_history %}
+    <h2>Search History:</h2>
+    <ul>
+      {% for search_entry in search_history %}
+        <li>{{ search_entry.country }} - {{ search_entry.timestamp }}</li>
+      {% endfor %}
+    </ul>
+    <hr>
+  {% endif %}
 
   {% for outbreak in outbreaks %}
     <div>
