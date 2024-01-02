@@ -1,15 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %}
+
 {% block content %}
+  <style>
+    body {
+      background-color: #212121; /* Set the background color to dark */
+      color: white; /* Set the text color to white */
+    }
+
+    h1 {
+      margin-bottom: 20px; /* Add margin at the bottom of the title */
+    }
+
+    .search-history-link {
+      margin-top: 10px; /* Add margin at the top of the search history link */
+      margin-right: 10px; /* Add margin at the right of the search history link */
+    }
+
+    .search-history {
+      margin-top: 20px; /* Add margin at the top of the search history section */
+    }
+  </style>
+
   <h1>Search Results for "{{ search_query }}"</h1>
+
+  <!-- Add the link/button to view search history -->
+  <a href="{{ url_for('views.search_history') }}" class="btn btn-info search-history-link">View Search History</a>
 
   <!-- Display user's search history -->
   {% if search_history %}
-    <h2>Search History:</h2>
-    <ul>
-      {% for search_entry in search_history %}
-        <li>{{ search_entry.country }} - {{ search_entry.timestamp }}</li>
-      {% endfor %}
-    </ul>
-    <hr>
+    <div class="search-history">
+      <h2>Search History:</h2>
+      <ul>
+        {% for search_entry in search_history %}
+          <li>{{ search_entry.country }} - {{ search_entry.timestamp }}</li>
+        {% endfor %}
+      </ul>
+      <hr>
+    </div>
   {% endif %}
 
   {% for outbreak in outbreaks %}
