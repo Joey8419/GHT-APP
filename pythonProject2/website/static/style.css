@@ -18,7 +18,7 @@ body {
 .img-germ-project-pic {
   width: 100%; /* Cover the entire width of the viewport */
   height: 200px; /* Adjust this value based on your needs */
-  background-image: url('/static/img/germ-project-pic.jpeg');
+  background-image: url('/static/img/background img.png');
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

@@ -3,6 +3,20 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="img-germ-project-pic"></div>
-<h1>Welcome to the Global Health Tracker</h1>
+  <div class="text-center">
+    <h1 class="welcome-text">Welcome to the Global Health Tracker</h1>
+  </div>
+
+  <style>
+    .text-center {
+      text-align: center;
+      margin-top: 50vh; /* Adjust the value based on your preference */
+      transform: translateY(-50%);
+    }
+
+    .welcome-text {
+      font-size: 75px; /* Update the font size as needed */
+      color: #ffffff; /* Update the color as needed */
+    }
+  </style>
 {% endblock %}

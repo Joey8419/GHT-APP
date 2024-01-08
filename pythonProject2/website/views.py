@@ -55,13 +55,28 @@ def visualization(outbreak_id):
     outbreak = Outbreaks.query.get_or_404(outbreak_id)
 
     # Extract years and occurrences for the selected country and disease
-    years = [entry.Year for entry in
-             Outbreaks.query.filter_by(Country=outbreak.Country, Disease=outbreak.Disease).order_by(Outbreaks.Year)]
-    occurrences = [entry.DONs for entry in
-                   Outbreaks.query.filter_by(Country=outbreak.Country, Disease=outbreak.Disease).order_by(
-                       Outbreaks.Year)]
+    data_points = Outbreaks.query.filter_by(Country=outbreak.Country, Disease=outbreak.Disease) \
+        .order_by(Outbreaks.Year).all()
+
+    years = [entry.Year for entry in data_points]
+    occurrences = [entry.DONs for entry in data_points]
 
     return render_template('visualization.html', outbreak=outbreak, years=years, occurrences=occurrences)
+
+
+# @views.route('/visualization/<int:outbreak_id>')
+# def visualization(outbreak_id):
+#     # Fetch the outbreak based on the provided outbreak_id
+#     outbreak = Outbreaks.query.get_or_404(outbreak_id)
+#
+#     # Extract years and occurrences for the selected country and disease
+#     years = [entry.Year for entry in
+#              Outbreaks.query.filter_by(Country=outbreak.Country, Disease=outbreak.Disease).order_by(Outbreaks.Year)]
+#     occurrences = [entry.DONs for entry in
+#                    Outbreaks.query.filter_by(Country=outbreak.Country, Disease=outbreak.Disease).order_by(
+#                        Outbreaks.Year)]
+#
+#     return render_template('visualization.html', outbreak=outbreak, years=years, occurrences=occurrences)
 
 
 # Add this route to views.py

@@ -4,12 +4,24 @@
 {% block title %}Visualization{% endblock %}
 
 {% block content %}
+  <style>
+    body {
+      background-color: #212121; /* Set the background color to dark */
+      color: white; /* Set the text color to white */
+    }
+
+    canvas {
+      background-color: #333; /* Set the background color for the bar chart canvas */
+      margin-top: 20px; /* Adjust margin as needed */
+    }
+  </style>
+
   <h1>Visualization for {{ outbreak.Country }} - {{ outbreak.Disease }}</h1>
 
   <!-- Add a canvas element to render the bar chart -->
   <canvas id="barChart" width="800" height="400"></canvas>
 
-  <a href="{{ url_for('views.results', search_query=outbreak.Country) }}">Back to Results</a>
+    <a href="{{ url_for('views.results', search_query=outbreak.Country) }}" class="btn btn-warning back-to-results-btn">Back to Results</a>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
@@ -18,10 +30,10 @@
       var barChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: {{ years|tojson }},
+          labels: {{ years | tojson }},
           datasets: [{
             label: 'Number of Occurrences',
-            data: {{ occurrences|tojson }},
+            data: {{ occurrences | tojson }},
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
